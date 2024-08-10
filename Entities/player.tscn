@@ -1,0 +1,152 @@
+[gd_scene load_steps=18 format=3 uid="uid://d083687tfuvxp"]
+
+[ext_resource type="Script" path="res://Entities/Player.gd" id="1_du77v"]
+[ext_resource type="Texture2D" uid="uid://xj152uhgv0rh" path="res://Assets/standing.png" id="2_1edhv"]
+[ext_resource type="Texture2D" uid="uid://duxnkyrbnoou1" path="res://Assets/attack1.png" id="2_bpam2"]
+[ext_resource type="Texture2D" uid="uid://bugd76siqigra" path="res://Assets/attack2-1.png" id="2_fak2c"]
+[ext_resource type="Texture2D" uid="uid://lihmeaqske05" path="res://Assets/attack2-2.png" id="3_axdgo"]
+[ext_resource type="Texture2D" uid="uid://830mrnjcnskl" path="res://Assets/attack2.png" id="3_nh80l"]
+[ext_resource type="Texture2D" uid="uid://b2ljchwjcfulf" path="res://Assets/blood.png" id="3_ubpuj"]
+[ext_resource type="Texture2D" uid="uid://dvkqsgqulysyg" path="res://Assets/attack3-1.png" id="6_patcg"]
+[ext_resource type="Texture2D" uid="uid://dlr18vwgsvhgl" path="res://Assets/attack3-2.png" id="7_ibg5u"]
+[ext_resource type="Texture2D" uid="uid://c0lfswk5jjhle" path="res://Assets/dead.png" id="8_cjtvj"]
+[ext_resource type="Texture2D" uid="uid://3o8cxjb40t7" path="res://Assets/swordattempt1.png" id="9_g2kyg"]
+[ext_resource type="Texture2D" uid="uid://bxpxf0025qnnr" path="res://Assets/mace.png" id="10_5d8u5"]
+[ext_resource type="Texture2D" uid="uid://6cf5vf1vx061" path="res://Assets/dagger.png" id="11_1nt26"]
+[ext_resource type="Texture2D" uid="uid://bdwh6ydilhc8a" path="res://Assets/wand.png" id="12_03dal"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i2pq6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bpam2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nh80l")
+}],
+"loop": true,
+"name": &"attack1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fak2c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_axdgo")
+}],
+"loop": false,
+"name": &"attack2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_patcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ibg5u")
+}],
+"loop": true,
+"name": &"attack3",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_cjtvj")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1edhv")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 14.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iccqh"]
+radius = 8.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5y8f6"]
+radius = 15.0
+height = 68.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_du77v")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_i2pq6")
+animation = &"die"
+
+[node name="weapon_frame_right" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(22, -8)
+rotation = 0.349066
+
+[node name="sword" type="Sprite2D" parent="Sprite2D/weapon_frame_right"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("9_g2kyg")
+
+[node name="mace" type="Sprite2D" parent="Sprite2D/weapon_frame_right"]
+visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("10_5d8u5")
+
+[node name="dagger" type="Sprite2D" parent="Sprite2D/weapon_frame_right"]
+visible = false
+position = Vector2(2.08165e-12, 8)
+texture = ExtResource("11_1nt26")
+
+[node name="wand" type="Sprite2D" parent="Sprite2D/weapon_frame_right"]
+visible = false
+position = Vector2(2.08165e-12, 8)
+texture = ExtResource("12_03dal")
+
+[node name="weapon_frame_left" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(5, -3)
+rotation = 0.855211
+
+[node name="sword" type="Sprite2D" parent="Sprite2D/weapon_frame_left"]
+visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("9_g2kyg")
+
+[node name="mace" type="Sprite2D" parent="Sprite2D/weapon_frame_left"]
+visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("10_5d8u5")
+
+[node name="dagger" type="Sprite2D" parent="Sprite2D/weapon_frame_left"]
+visible = false
+position = Vector2(2.08165e-12, 8)
+texture = ExtResource("11_1nt26")
+
+[node name="wand" type="Sprite2D" parent="Sprite2D/weapon_frame_left"]
+visible = false
+position = Vector2(2.08165e-12, 8)
+texture = ExtResource("12_03dal")
+
+[node name="blood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3_ubpuj")
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="blood_timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_iccqh")
+
+[node name="stab_range" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_5y8f6")
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="blood_timer" to="." method="_on_blood_timer_timeout"]

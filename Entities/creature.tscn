@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg17asfiyvgou"]
+
+[ext_resource type="Script" path="res://Entities/creature.gd" id="1_jncvn"]
+
+[node name="Creature" type="CharacterBody2D"]
+script = ExtResource("1_jncvn")

@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0krabu0utnyg"]
+
+[ext_resource type="Texture2D" uid="uid://cufflo4esw3ja" path="res://Assets/zombie.png" id="1"]
+[ext_resource type="Script" path="res://Entities/Zombie.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://du5uo1k1774fc" path="res://Assets/blood2.png" id="3"]
+[ext_resource type="StyleBox" path="res://Assets/black.tres" id="4_kfkqi"]
+
+[sub_resource type="CapsuleShape2D" id="1"]
+radius = 8.0
+height = 46.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57ek4"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="zombie" type="CharacterBody2D"]
+position = Vector2(54, -3)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1")
+offset = Vector2(-8, 2.08165e-12)
+
+[node name="blood" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("3")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="health_bar" type="ProgressBar" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -15.5
+offset_top = -35.0
+offset_right = 15.5
+offset_bottom = -28.0
+grow_horizontal = 2
+scale = Vector2(1, 0.3)
+theme_override_styles/background = ExtResource("4_kfkqi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_57ek4")
+max_value = 15.0
+rounded = true
+show_percentage = false
+
+[node name="blood_timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="blood_timer" to="." method="_on_blood_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2um60olcsssc"]
+
+[ext_resource type="Script" path="res://Entities/SceneControl.gd" id="1_quuri"]
+
+[node name="SceneControl" type="Node"]
+script = ExtResource("1_quuri")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3j32jnmh71fk"]
+
+[ext_resource type="Script" path="res://Entities/combat_control.gd" id="1_2qcgx"]
+[ext_resource type="PackedScene" path="res://Entities/DamageObject.tscn" id="2_x1l5p"]
+
+[node name="CombatControl" type="Node"]
+script = ExtResource("1_2qcgx")
+damage_resource = ExtResource("2_x1l5p")

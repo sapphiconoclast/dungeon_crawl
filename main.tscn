@@ -1,0 +1,276 @@
+[gd_scene load_steps=13 format=3 uid="uid://dngep5fwpd336"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_4qpyo"]
+[ext_resource type="Texture2D" uid="uid://b6wtsiaie7t2v" path="res://Assets/inventory.png" id="3_acjpe"]
+[ext_resource type="PackedScene" uid="uid://d083687tfuvxp" path="res://Entities/Player.tscn" id="3_jjky7"]
+[ext_resource type="Script" path="res://InventoryUI.gd" id="4_bfgvq"]
+[ext_resource type="Theme" uid="uid://bfu8iqfhs4qij" path="res://Assets/Monochrome.tres" id="4_k2lsy"]
+[ext_resource type="Texture2D" uid="uid://d3ooa2woq03r8" path="res://Assets/youdied.png" id="8_31gue"]
+[ext_resource type="Texture2D" uid="uid://b15hno46qwu4m" path="res://Assets/youwin.png" id="9_g4gdd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k4vem"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0dgiq"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nx6g"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7k82k"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11fq3"]
+bg_color = Color(0, 0, 1, 1)
+
+[node name="Main" type="Node"]
+process_mode = 3
+script = ExtResource("1_4qpyo")
+player_resource = ExtResource("3_jjky7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="controls" type="Label" parent="CanvasLayer"]
+offset_left = 313.0
+offset_top = 277.0
+offset_right = 648.0
+offset_bottom = 430.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "WASD -> Movement
+Q -> Open Inventory & Pause
+E -> Loot Chest/Open Door
+Left Click -> Main Attack
+Right Click -> Off Attack
+LShift + Attack = Power Attack"
+horizontal_alignment = 1
+
+[node name="InventoryUI" type="Sprite2D" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+position = Vector2(480, 240)
+texture = ExtResource("3_acjpe")
+script = ExtResource("4_bfgvq")
+
+[node name="Label1" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 2.0
+offset_top = -120.0
+offset_right = 102.0
+offset_bottom = -100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label2" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 2.0
+offset_top = -100.0
+offset_right = 102.0
+offset_bottom = -80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label3" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 2.0
+offset_top = -80.0
+offset_right = 102.0
+offset_bottom = -60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label4" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 2.0
+offset_top = -60.0
+offset_right = 102.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label5" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 102.0
+offset_top = -120.0
+offset_right = 202.0
+offset_bottom = -100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label6" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 102.0
+offset_top = -100.0
+offset_right = 202.0
+offset_bottom = -80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label7" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 102.0
+offset_top = -80.0
+offset_right = 202.0
+offset_bottom = -60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label8" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 102.0
+offset_top = -60.0
+offset_right = 202.0
+offset_bottom = -40.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Label9" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 2.0
+offset_top = 55.0
+offset_right = 214.0
+offset_bottom = 117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Label10" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = -8.0
+offset_top = -140.0
+offset_right = 210.0
+offset_bottom = -117.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="InventoryList" type="ItemList" parent="CanvasLayer/InventoryUI"]
+offset_left = -205.0
+offset_top = -119.0
+offset_right = -35.0
+offset_bottom = 141.0
+theme = ExtResource("4_k2lsy")
+theme_override_colors/font_hovered_color = Color(1, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 1, 0, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_k4vem")
+allow_reselect = true
+allow_rmb_select = true
+
+[node name="left_button_cover" type="ColorRect" parent="CanvasLayer/InventoryUI"]
+visible = false
+offset_left = -10.0
+offset_top = 127.0
+offset_right = 75.0
+offset_bottom = 155.0
+
+[node name="middle_button_cover" type="ColorRect" parent="CanvasLayer/InventoryUI"]
+visible = false
+offset_left = 76.0
+offset_top = 127.0
+offset_right = 133.0
+offset_bottom = 155.0
+
+[node name="right_button_cover" type="ColorRect" parent="CanvasLayer/InventoryUI"]
+visible = false
+offset_left = 134.0
+offset_top = 127.0
+offset_right = 218.0
+offset_bottom = 155.0
+
+[node name="Equip Left" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = -1.0
+offset_top = 131.0
+offset_right = 66.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Equip Right" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 141.0
+offset_top = 131.0
+offset_right = 212.0
+offset_bottom = 154.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="descLabel" type="Label" parent="CanvasLayer/InventoryUI"]
+offset_left = 4.0
+offset_top = -19.0
+offset_right = 211.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+autowrap_mode = 3
+
+[node name="left_button" type="Button" parent="CanvasLayer/InventoryUI"]
+offset_left = -7.0
+offset_top = 131.0
+offset_right = 73.0
+offset_bottom = 153.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dgiq")
+action_mode = 0
+
+[node name="middle_button" type="Button" parent="CanvasLayer/InventoryUI"]
+offset_left = 78.0
+offset_top = 131.0
+offset_right = 131.0
+offset_bottom = 153.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dgiq")
+action_mode = 0
+
+[node name="right_button" type="Button" parent="CanvasLayer/InventoryUI"]
+offset_left = 136.0
+offset_top = 131.0
+offset_right = 217.0
+offset_bottom = 153.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_0dgiq")
+action_mode = 0
+
+[node name="LeftMargin" type="ColorRect" parent="CanvasLayer"]
+offset_right = 240.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="Equipment" type="Label" parent="CanvasLayer/LeftMargin"]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 40.0
+offset_bottom = 113.0
+
+[node name="Bars" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 200.0
+offset_bottom = 90.0
+
+[node name="health_bar" type="ProgressBar" parent="CanvasLayer/Bars"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_1nx6g")
+rounded = true
+
+[node name="stam_bar" type="ProgressBar" parent="CanvasLayer/Bars"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_7k82k")
+rounded = true
+
+[node name="mag_bar" type="ProgressBar" parent="CanvasLayer/Bars"]
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_11fq3")
+rounded = true
+
+[node name="RightMargin" type="ColorRect" parent="CanvasLayer"]
+offset_left = 720.0
+offset_right = 960.0
+offset_bottom = 480.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/RightMargin"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="DeathMessage" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(480, 240)
+texture = ExtResource("8_31gue")
+
+[node name="WinMessage" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(480, 240)
+texture = ExtResource("9_g4gdd")
+
+[node name="death_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="item_clicked" from="CanvasLayer/InventoryUI/InventoryList" to="CanvasLayer/InventoryUI" method="_on_item_clicked"]
+[connection signal="pressed" from="CanvasLayer/InventoryUI/left_button" to="CanvasLayer/InventoryUI" method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InventoryUI/middle_button" to="CanvasLayer/InventoryUI" method="_on_middle_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/InventoryUI/right_button" to="CanvasLayer/InventoryUI" method="_on_right_button_pressed"]

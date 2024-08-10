@@ -1,0 +1,158 @@
+[gd_scene load_steps=21 format=3 uid="uid://dmdlovi61jflu"]
+
+[ext_resource type="Script" path="res://Entities/dungeon_room.gd" id="1_r3d7y"]
+[ext_resource type="Texture2D" uid="uid://cgg56gnud4vio" path="res://Assets/room-1door-end.png" id="2_5tvwf"]
+[ext_resource type="Texture2D" uid="uid://50d24utebgvo" path="res://Assets/room-3door.png" id="2_c1v3e"]
+[ext_resource type="PackedScene" uid="uid://d0krabu0utnyg" path="res://Entities/zombie.tscn" id="2_no3k4"]
+[ext_resource type="PackedScene" uid="uid://kkx8xt0ph645" path="res://Entities/Chest.tscn" id="3_1sacu"]
+[ext_resource type="Texture2D" uid="uid://dqv1nlm6amm3v" path="res://Assets/room-1door-start.png" id="3_8bcd5"]
+[ext_resource type="Texture2D" uid="uid://brbvfvf4pc0g2" path="res://Assets/room-2door-bend.png" id="3_sepnv"]
+[ext_resource type="Texture2D" uid="uid://cplo84wj2hn8l" path="res://Assets/room-2door-straight.png" id="4_x2our"]
+[ext_resource type="Texture2D" uid="uid://bam8finap0vwm" path="res://Assets/room-4door.png" id="7_ai5r6"]
+[ext_resource type="Script" path="res://Entities/Portal.gd" id="8_6arxm"]
+[ext_resource type="Texture2D" uid="uid://gmy4tfrtkqri" path="res://Assets/Portal.png" id="10_74gwc"]
+[ext_resource type="Texture2D" uid="uid://b0shbvaw0e0yr" path="res://Assets/bar.png" id="12_2m5a8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_162lr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8bcd5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5tvwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_x2our")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sepnv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c1v3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ai5r6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewgpa"]
+size = Vector2(77, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mbav"]
+size = Vector2(42, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_16gwj"]
+size = Vector2(77, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k82ov"]
+size = Vector2(38, 76)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6uhgy"]
+radius = 36.0035
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cy2n"]
+size = Vector2(480, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_phauh"]
+size = Vector2(20, 434)
+
+[node name="DungeonRoom" type="Node2D"]
+position = Vector2(360, 240)
+script = ExtResource("1_r3d7y")
+zombie_resource = ExtResource("2_no3k4")
+chest_resource = ExtResource("3_1sacu")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_162lr")
+
+[node name="north_door" type="Area2D" parent="."]
+position = Vector2(-13, -210)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="north_door"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_ewgpa")
+
+[node name="east_door" type="Area2D" parent="."]
+position = Vector2(206, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="east_door"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_0mbav")
+
+[node name="south_door" type="Area2D" parent="."]
+position = Vector2(-2, 213)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="south_door"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_16gwj")
+
+[node name="west_door" type="Area2D" parent="."]
+position = Vector2(-212, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="west_door"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_k82ov")
+
+[node name="bar1" type="Sprite2D" parent="."]
+position = Vector2(-11, -206)
+scale = Vector2(2, 2)
+texture = ExtResource("12_2m5a8")
+
+[node name="bar2" type="Sprite2D" parent="."]
+position = Vector2(-3, 215)
+scale = Vector2(2, 2)
+texture = ExtResource("12_2m5a8")
+
+[node name="bar3" type="Sprite2D" parent="."]
+position = Vector2(207, -7)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("12_2m5a8")
+
+[node name="bar4" type="Sprite2D" parent="."]
+position = Vector2(-215, 6)
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("12_2m5a8")
+
+[node name="Portal" type="Area2D" parent="."]
+visible = false
+scale = Vector2(2, 2)
+collision_layer = 128
+script = ExtResource("8_6arxm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Portal"]
+texture = ExtResource("10_74gwc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal"]
+shape = SubResource("CircleShape2D_6uhgy")
+
+[node name="north_wall" type="StaticBody2D" parent="."]
+position = Vector2(2.08165e-12, -230)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="north_wall"]
+shape = SubResource("RectangleShape2D_6cy2n")
+
+[node name="east_wall" type="StaticBody2D" parent="."]
+position = Vector2(230, 2.08165e-12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="east_wall"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_phauh")
+
+[node name="south_wall" type="StaticBody2D" parent="."]
+position = Vector2(2.08165e-12, 230)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="south_wall"]
+shape = SubResource("RectangleShape2D_6cy2n")
+
+[node name="west_wall" type="StaticBody2D" parent="."]
+position = Vector2(-230, 2.08165e-12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="west_wall"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+shape = SubResource("RectangleShape2D_phauh")

@@ -1,0 +1,77 @@
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bfu8iqfhs4qij"]
+
+[sub_resource type="StyleBoxFlat" id="13"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="14"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="15"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="7"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="16"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="4"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="5"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="6"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="9"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="10"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="11"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="12"]
+bg_color = Color(1, 1, 1, 1)
+
+[resource]
+/colors/000000 = Color(0, 0, 0, 1)
+/colors/ffffff = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("13")
+Button/styles/focus = SubResource("14")
+Button/styles/hover = SubResource("15")
+Button/styles/normal = SubResource("7")
+Button/styles/pressed = SubResource("16")
+ItemList/colors/font_color = Color(0, 0, 0, 1)
+ItemList/colors/font_color_selected = Color(0, 0, 0, 0)
+ItemList/colors/guide_color = Color(0, 0, 0, 0.1)
+ItemList/constants/hseparation = 4
+ItemList/constants/icon_margin = 4
+ItemList/constants/line_separation = 2
+ItemList/constants/vseparation = 2
+ItemList/fonts/font = null
+ItemList/styles/bg = SubResource("1")
+ItemList/styles/bg_focus = SubResource("2")
+ItemList/styles/cursor = SubResource("3")
+ItemList/styles/cursor_unfocused = SubResource("4")
+ItemList/styles/selected = SubResource("5")
+ItemList/styles/selected_focus = SubResource("6")
+VScrollBar/styles/grabber = SubResource("8")
+VScrollBar/styles/grabber_highlight = SubResource("9")
+VScrollBar/styles/grabber_pressed = SubResource("10")
+VScrollBar/styles/scroll = SubResource("11")
+VScrollBar/styles/scroll_focus = SubResource("12")
